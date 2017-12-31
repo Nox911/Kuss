@@ -47,6 +47,8 @@
             let front = document.getElementById('front');
             let back = document.getElementById('back');
             let list = document.getElementById('current');
+            front.classList.add('hidden');
+            back.classList.add('hidden');
             setTimeout (function() {
                 front.src="img/front_0"+nexted+".png";
                 back.style.backgroundImage="url('img/background_0"+nexted+".jpg')";
@@ -54,8 +56,7 @@
             setTimeout (function() {
                 front.classList.remove('hidden');
             }, 2000);   
-            front.classList.add('hidden');
-            back.classList.add('hidden');
+
             list.innerHTML=nexted;
             }
         }
