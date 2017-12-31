@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kusss</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Где это было?</h2>
+        <div class="foto">
+            <img class="front" id="front" src="img/front_01.png" alt="">
+            <div class="back hidden" id="back">
+            </div>
+            
+
+        </div>
+        <div class="control">
+            <div class="btn" onclick="check()">Проверить</div>
+            <div class="list"><span id="current" class="current">1</span>/53</div>
+            <div class="btn" onclick="next()">Следующая</div>
+        </div>
+    </div>
+    <script>
+        let sound = new Audio;
+        sound.src=('sound/sound.mp3');
+        sound.play();
+        let nexted = 1;
+        function check() {
+        let back = document.getElementById('back');
+        back.classList.remove('hidden');
+        }
+
+        function next() {
+            if(sound.ended===true) {
+                sound.currentTime=0;
+                sound.play();
+            }
+            nexted++;
+            if (nexted>53) {
+                alert('конец');
+            }
+            else {
+            let front = document.getElementById('front');
+            let back = document.getElementById('back');
+            let list = document.getElementById('current');
+            setTimeout (function() {
+                front.src="img/front_0"+nexted+".png";
+                back.style.backgroundImage="url('img/background_0"+nexted+".jpg')";
+            }, 1800);    
+            setTimeout (function() {
+                front.classList.remove('hidden');
+            }, 2000);   
+            front.classList.add('hidden');
+            back.classList.add('hidden');
+            list.innerHTML=nexted;
+            }
+        }
+    </script>
+    
+</body>
+</html>
